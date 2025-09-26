@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>História do Teatro</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+    body { background-color: #1c0a0a; color: #f5e1c0; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden; }
+    header { background-color: #330000; padding: 20px; text-align: center; font-size: 2rem; font-weight: bold; color: #ffd700; border-bottom: 3px solid #ffd700; position: relative; }
+    header::after { content: "Feito por João Gabriel Luckmeyer"; display: block; font-size: 0.8rem; color: #f0d9a0; margin-top: 5px; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; background-color: #440000; border-bottom: 2px solid #880000; }
+    nav button { background: #550000; border: 2px solid #880000; border-radius: 5px; color: #ffd700; padding: 12px 15px; cursor: pointer; transition: all 0.4s ease; font-size: 0.9rem; margin: 4px; font-weight: bold; }
+    nav button:hover { background-color: #880000; color: #fff; transform: scale(1.05); box-shadow: 0 0 10px #ffd700; }
+    nav button.active { background-color: #ff4500; color: #fff; border-bottom: 3px solid #ffd700; box-shadow: 0 0 15px #ffd700; }
+    main { flex: 1; padding: 25px; max-width: 1000px; margin: 0 auto; position: relative; overflow: hidden; }
+    .tab-content { opacity: 0; transform: scaleY(0); transform-origin: top; transition: opacity 0.6s ease, transform 0.6s ease; position: absolute; width: 100%; top: 0; left: 0; background: #1c0a0a; padding: 15px; border-radius: 5px; }
+    .tab-content.active { opacity: 1; transform: scaleY(1); position: relative; }
+    h2 { margin-bottom: 20px; color: #ffcc00; text-align: center; text-shadow: 2px 2px #330000; }
+    ul { list-style: disc inside; margin-bottom: 20px; }
+    li { margin-bottom: 12px; line-height: 1.6; }
+    .info-title { font-weight: bold; color: #ffb84d; }
+    .info-desc { color: #f5e1c0; margin-left: 6px; }
+    footer { text-align: center; padding: 15px; background-color: #330000; border-top: 2px solid #880000; font-size: 0.9rem; color: #ffd700; }
+</style>
+</head>
+<body>
+
+<header>História do Teatro</header>
+
+<nav id="tabs">
+    <button class="tab-btn active" data-tab="1">Origens</button>
+    <button class="tab-btn" data-tab="2">Romano</button>
+    <button class="tab-btn" data-tab="3">Idade Média</button>
+    <button class="tab-btn" data-tab="4">Renascimento</button>
+    <button class="tab-btn" data-tab="5">Barroco</button>
+    <button class="tab-btn" data-tab="6">Neoclássico</button>
+    <button class="tab-btn" data-tab="7">Romântico</button>
+    <button class="tab-btn" data-tab="8">Moderno</button>
+    <button class="tab-btn" data-tab="9">Contemporâneo</button>
+    <button class="tab-btn" data-tab="10">Curiosidades</button>
+    <button class="tab-btn" data-tab="11">Teatro Asiático</button>
+    <button class="tab-btn" data-tab="12">Teatro Africano</button>
+    <button class="tab-btn" data-tab="13">Teatro Latino-Americano</button>
+    <button class="tab-btn" data-tab="14">Teatro Experimental</button>
+    <button class="tab-btn" data-tab="15">Futuro</button>
+</nav>
+
+<main id="content"></main>
+
+<footer>© 2025 História do Teatro</footer>
+
+<script>
+const tabs = document.querySelectorAll('.tab-btn');
+const content = document.getElementById('content');
+
+const tabData = {
+1: { title: "Origens do Teatro", infos: [
+{title:"Teatro na Antiguidade", desc:"Surgiu na Grécia Antiga, por volta do século V a.C., como parte das festividades religiosas em homenagem a Dionísio."},
+{title:"Máscaras Teatrais", desc:"Eram usadas para ampliar a expressão facial e a voz, permitindo que até espectadores distantes percebessem emoções."},
+{title:"Teatro Egípcio", desc:"Antes da Grécia, rituais egípcios já combinavam música, dança e dramatização para contar mitos e lendas."},
+{title:"Primeiras Tragédias", desc:"Escritores como Ésquilo e Sófocles desenvolveram peças que exploravam dilemas humanos e éticos."},
+{title:"Rituais Religiosos", desc:"O teatro tinha forte ligação com cultos e festivais religiosos."},
+{title:"Choros e Coros", desc:"O coro comentava a ação, funcionando como narrativa coletiva."},
+{title:"Poetas Clássicos", desc:"Autores como Eurípides e Aristófanes influenciaram comédias e tragédias."},
+{title:"Primeiro Palco", desc:"As apresentações ocorriam em anfiteatros ao ar livre."},
+{title:"Influência Cultural", desc:"Estabeleceu bases para teatro ocidental moderno."},
+{title:"Curiosidade", desc:"Na Grécia Antiga, apenas homens atuavam; mulheres eram representadas por homens usando máscaras."}
+]},
+2: { title: "Teatro Romano", infos: [
+{title:"Adaptação Grega", desc:"Roma importou o teatro grego, mas com foco maior em entretenimento."},
+{title:"Comédia e Tragédia", desc:"Plauto e Terêncio escreveram comédias populares que influenciam até hoje."},
+{title:"Arquitetura", desc:"Anfiteatros maiores permitiam milhares de espectadores."},
+{title:"Efeitos Cênicos", desc:"Inventaram cortinas e mecanismos de cenários móveis."},
+{title:"Esportes e Teatro", desc:"Gladiadores e espetáculos de animais misturados a peças."},
+{title:"Actores Profissionais", desc:"Havia grupos de atores itinerantes."},
+{title:"Festivais Públicos", desc:"Teatro estava ligado a celebrações civis."},
+{title:"Influência Grega", desc:"Adotaram estilos e tramas da Grécia."},
+{title:"Música e Dança", desc:"Complementavam a narrativa dramática."},
+{title:"Curiosidade", desc:"Atores usavam sapatos especiais para amplificar a voz."}
+]},
+3: { title: "Idade Média", infos: [
+{title:"Teatro Religioso", desc:"A Igreja Católica dominava, e as peças eram usadas para ensinar histórias bíblicas."},
+{title:"Mistério e Moralidade", desc:"Surgiram os autos de moralidade, peças que ensinavam lições éticas."},
+{title:"Espaço Cênico", desc:"As apresentações aconteciam em praças ou dentro das igrejas, sem teatros fixos."},
+{title:"Participação Popular", desc:"O público muitas vezes interagia com os atores e comentava durante as apresentações."},
+{title:"Teatro Ambulante", desc:"Grupos viajavam com pequenas carroças que se transformavam em palcos móveis."},
+{title:"Figurinos Simples", desc:"Vestimentas básicas representavam personagens religiosos."},
+{title:"Atuação Exagerada", desc:"Expressões faciais e gestos eram muito amplificados."},
+{title:"Festas e Feiras", desc:"O teatro estava presente em festivais populares."},
+{title:"Peças em Vernáculo", desc:"Linguagem mais próxima do público."},
+{title:"Curiosidade", desc:"Alguns grupos representavam histórias bíblicas completas em ciclos de dias."}
+]},
+4: { title: "Renascimento", infos: [
+{title:"Renascimento Italiano", desc:"Teatros como o Teatro Olímpico em Vicenza inovaram com perspectiva cenográfica."},
+{title:"Commedia dell’Arte", desc:"Teatro popular com personagens fixos, improvisação e máscaras."},
+{title:"Influência Clássica", desc:"Inspiraram-se na Grécia e Roma, valorizando tragédias e comédias estruturadas."},
+{title:"Dramaturgos Famosos", desc:"Shakespeare na Inglaterra e Molière na França marcaram o período com obras que ainda são encenadas."},
+{title:"Plateia Sentada", desc:"O Renascimento trouxe a ideia de arquibancadas organizadas."},
+{title:"Cenários Pintados", desc:"Criaram cenários com perspectiva para profundidade."},
+{title:"Teatro Secular", desc:"O teatro deixou de ser exclusivamente religioso."},
+{title:"Patrocínio", desc:"Nobres e mecenas apoiavam companhias de teatro."},
+{title:"Figuras Icônicas", desc:"Personagens fixos e máscaras ajudavam a improvisação."},
+{title:"Curiosidade", desc:"O Renascimento promoveu o teatro como entretenimento artístico."}
+]},
+5: { title: "Barroco", infos: [
+{title:"Décor Luxuoso", desc:"Palcos ricos em ornamentos, efeitos de luz e cenários grandiosos."},
+{title:"Religiosidade e Política", desc:"Peças refletiam poder monárquico e valores religiosos."},
+{title:"Interatividade", desc:"Cantos, danças e música eram incorporados."},
+{title:"Teatro Espanhol", desc:"Obras de Tirso de Molina e Calderón de la Barca."},
+{title:"Atores Multitarefas", desc:"Atores também eram músicos ou acrobatas."},
+{title:"Grandes Palcos", desc:"Construíram teatros elaborados em cidades importantes."},
+{title:"Figurinos Ornamentados", desc:"Roupas luxuosas realçavam status dos personagens."},
+{title:"Efeitos de Luz", desc:"Velas e tochas criavam atmosferas dramáticas."},
+{title:"Tramas Complexas", desc:"Mistura de comédia, drama e moralidade."},
+{title:"Curiosidade", desc:"O Barroco intensificou o espetáculo visual e emocional."}
+]},
+6: { title: "Neoclássico", infos: [
+{title:"Racionalidade", desc:"Valorizava regras de unidade de tempo, lugar e ação."},
+{title:"Influência Antiga", desc:"Imitava equilíbrio e harmonia grega e romana."},
+{title:"Dramaturgos Famosos", desc:"Racine e Corneille escreveram tragédias morais."},
+{title:"Censura", desc:"Controle por autoridades religiosas e políticas."},
+{title:"Crítica Literária", desc:"Estabeleceu padrões influentes no teatro moderno."},
+{title:"Cenários Minimalistas", desc:"Poucos elementos decorativos, foco na ação."},
+{title:"Diálogos Rigorosos", desc:"Linguagem formal e estruturada."},
+{title:"Moral e Educação", desc:"Peças transmitiam lições éticas."},
+{title:"Palcos Simétricos", desc:"Arquitetura valorizava ordem visual."},
+{title:"Curiosidade", desc:"Neoclássico buscava racionalidade e equilíbrio absoluto."}
+]},
+7: { title: "Romântico", infos: [
+{title:"Emoção e Liberdade", desc:"Contrapôs-se às regras rígidas do neoclassicismo."},
+{title:"Grandes Dramas", desc:"Dramaturgos como Victor Hugo exploraram paixões e vingança."},
+{title:"Cenário e Figurino", desc:"Mais realismo nas roupas e cenários."},
+{title:"Heróis Trágicos", desc:"Personagens complexos e sofridos."},
+{title:"Teatros Nacionais", desc:"Construção de grandes teatros valorizando cultura local."},
+{title:"Natureza e Paisagem", desc:"Cenários frequentemente inspirados em ambientes naturais."},
+{title:"Linguagem Expressiva", desc:"Textos emocionais e poéticos."},
+{title:"Improvisação Limitada", desc:"Ensaio ainda importante, mas mais liberdade para atuação."},
+{title:"Música Emocional", desc:"Acompanhamento musical reforçava dramaticidade."},
+{title:"Curiosidade", desc:"Romantismo ampliou alcance emocional do público."}
+]},
+8: { title: "Moderno", infos: [
+{title:"Quebra de Convenções", desc:"Dramaturgos como Ibsen e Chekhov exploraram problemas sociais."},
+{title:"Teatro Realista", desc:"Diálogos mais naturais, refletindo cotidiano."},
+{title:"Experimentações", desc:"Expressionismo, futurismo e novas linguagens."},
+{title:"Espaço Cênico", desc:"Palco mais flexível e abstrato."},
+{title:"Questões Psicológicas", desc:"Personagens com conflitos internos complexos."},
+{title:"Teatro Político", desc:"Peças questionavam a sociedade e autoridades."},
+{title:"Diretores Inovadores", desc:"Novas técnicas de encenação e iluminação."},
+{title:"Narrativa Não Linear", desc:"Histórias fragmentadas e múltiplas perspectivas."},
+{title:"Interdisciplinaridade", desc:"Mistura de música, dança e artes visuais."},
+{title:"Curiosidade", desc:"Modernismo trouxe questionamento das hierarquias clássicas."}
+]},
+9: { title: "Contemporâneo", infos: [
+{title:"Diversidade de Formatos", desc:"Inclui teatro físico, musical, performance, rua e experimental."},
+{title:"Temas Atuais", desc:"Explora política, gênero, identidade, tecnologia e meio ambiente."},
+{title:"Interatividade", desc:"Público participa da narrativa."},
+{title:"Tecnologia", desc:"Projeções, luzes e realidade aumentada."},
+{title:"Mistura de Artes", desc:"Combina teatro, dança, cinema e música."},
+{title:"Narrativa Participativa", desc:"Espetáculos imersivos e colaborativos."},
+{title:"Espaços Alternativos", desc:"Ruas, galerias e espaços não convencionais."},
+{title:"Produções Multiculturais", desc:"Integra diferentes tradições teatrais."},
+{title:"Crítica Social", desc:"Teatro contemporâneo questiona normas e política."},
+{title:"Curiosidade", desc:"Experiências imersivas aproximam público da arte."}
+]},
+10: { title: "Curiosidades Gerais", infos: [
+{title:"Maior Teatro do Mundo", desc:"O Teatro Bolshoi, em Moscou, é famoso por grandiosidade e história."},
+{title:"Teatro ao Ar Livre", desc:"Muitos teatros antigos eram sem teto, aproveitando luz natural."},
+{title:"Festivais Teatrais", desc:"Festivais como Avignon celebram inovações."},
+{title:"Atores Famosos", desc:"Laurence Olivier, Sarah Bernhardt e outros."},
+{title:"Curiosidade", desc:"Teatro sempre refletiu sociedade, religião e política."},
+{title:"Primeiro Musical", desc:"Peças com música integrada surgiram no século XVII."},
+{title:"Palco Giratório", desc:"Invenção para mudança rápida de cenários."},
+{title:"Figuras Mitológicas", desc:"Mitos antigos eram tema constante."},
+{title:"Efeitos Especiais", desc:"Fumaça, luzes e mecânica de palco."},
+{title:"Plateias Variadas", desc:"Do público popular às cortes reais."}
+]},
+11: { title: "Teatro Asiático", infos: [
+{title:"Noh Japonês", desc:"Teatro tradicional japonês com máscaras e gestos estilizados."},
+{title:"Kabuki", desc:"Peças dramatizadas com dança e música."},
+{title:"Beijing Opera", desc:"Ópera chinesa com maquiagem colorida e acrobacias."},
+{title:"Performance Ritual", desc:"Teatro ligado à religião e festivais."},
+{title:"Tradição Oral", desc:"Histórias passadas por gerações."},
+{title:"Figurinos Elaborados", desc:"Vestimentas simbolizam personagens e status."},
+{title:"Movimentos Precisos", desc:"Gestos codificados transmitem emoções."},
+{title:"Narrativa Simbólica", desc:"Histórias muitas vezes alegóricas."},
+{title:"Instrumentos Tradicionais", desc:"Shamisen, gongs e flautas."},
+{title:"Curiosidade", desc:"Teatros asiáticos influenciam cinema e dança moderna."}
+]},
+12: { title: "Teatro Africano", infos: [
+{title:"Oralidade", desc:"Tradição de contar histórias com música e dança."},
+{title:"Ritual e Comunidade", desc:"Teatro ligado à vida social e religiosa."},
+{title:"Máscaras e Figurinos", desc:"Representam espíritos, animais e ancestrais."},
+{title:"Dança e Música", desc:"Parte essencial da narrativa."},
+{title:"Histórias Morais", desc:"Transmitiam ensinamentos culturais e éticos."},
+{title:"Teatro Contemporâneo", desc:"Combina tradição com temas sociais modernos."},
+{title:"Festivais Locais", desc:"Celebração da dramaturgia africana."},
+{title:"Cores e Simbolismo", desc:"Uso de cores para representar status e emoções."},
+{title:"Performance Coletiva", desc:"Envolvimento de toda a comunidade."},
+{title:"Curiosidade", desc:"Influência em teatro moderno e dança global."}
+]},
+13: { title: "Teatro Latino-Americano", infos: [
+{title:"Teatro Colonial", desc:"Mistura de influências indígenas, africanas e europeias."},
+{title:"Teatro Popular", desc:"Peças de rua abordavam temas cotidianos."},
+{title:"Movimento Modernista", desc:"Experimentações de linguagem e narrativa."},
+{title:"Teatro Político", desc:"Peças de resistência e crítica social."},
+{title:"Musicalidade", desc:"Integra dança e música típica regional."},
+{title:"Figuras Icônicas", desc:"Autores como García Lorca e Augusto Boal."},
+{title:"Teatro do Oprimido", desc:"Augusto Boal criou metodologia interativa."},
+{title:"Censura", desc:"Períodos de repressão influenciaram dramaturgia."},
+{title:"Espaços Alternativos", desc:"Teatro em praças, escolas e centros comunitários."},
+{title:"Curiosidade", desc:"Cultura teatral reflete diversidade da região."}
+]},
+14: { title: "Teatro Experimental", infos: [
+{title:"Quebra de Convenções", desc:"Rejeita formas tradicionais de encenação."},
+{title:"Performance e Instalação", desc:"Mistura de artes plásticas, dança e som."},
+{title:"Interatividade", desc:"Público participa e influencia a obra."},
+{title:"Narrativa Fragmentada", desc:"Histórias não lineares ou abertas."},
+{title:"Corpo como Instrumento", desc:"Ator como elemento central da expressão."},
+{title:"Tecnologia", desc:"Uso de luzes, vídeo e realidade virtual."},
+{title:"Espaços Não Convencionais", desc:"Ruas, galpões e locais urbanos."},
+{title:"Experimentação Sonora", desc:"Música, ruídos e silêncio como elementos cênicos."},
+{title:"Teatro Contínuo", desc:"Espetáculos longos ou interativos durante horas."},
+{title:"Curiosidade", desc:"Experimental inspira novas linguagens teatrais."}
+]},
+15: { title: "Futuro do Teatro", infos: [
+{title:"Realidade Virtual", desc:"Espetáculos imersivos em ambientes digitais."},
+{title:"Híbrido Digital", desc:"Transmissões online combinadas com presencial."},
+{title:"Inteligência Artificial", desc:"Personagens controlados por algoritmos."},
+{title:"Interatividade Extrema", desc:"Público influencia narrativas em tempo real."},
+{title:"Sustentabilidade", desc:"Palcos e cenários ecologicamente corretos."},
+{title:"Multiculturalismo", desc:"Integra diversas tradições e linguagens."},
+{title:"Novas Linguagens", desc:"Fusão de teatro, cinema, jogos e performance."},
+{title:"Espaços Flexíveis", desc:"Palcos modulares e transportáveis."},
+{title:"Narrativas Personalizadas", desc:"Cada espectador pode ter experiência única."},
+{title:"Curiosidade", desc:"O futuro do teatro será imersivo, tecnológico e colaborativo."}
+]}
+};
+
+function renderTab(tabNumber) {
+    const oldContent = document.querySelector('.tab-content');
+    if(oldContent) {
+        oldContent.style.transformOrigin = 'top';
+        oldContent.style.transform = 'scaleY(0)';
+        oldContent.style.opacity = '0';
+        setTimeout(() => oldContent.remove(), 600);
+    }
+    const data = tabData[tabNumber];
+    const div = document.createElement('div');
+    div.classList.add('tab-content');
+    div.style.transform = 'scaleY(0)';
+    div.style.opacity = '0';
+    div.style.transformOrigin = 'top';
+    div.innerHTML = `<h2>${data.title}</h2><ul>${data.infos.map(info => `<li><span class="info-title">${info.title}:</span> <span class="info-desc">${info.desc}</span></li>`).join('')}</ul>`;
+    content.appendChild(div);
+    setTimeout(() => {
+        div.classList.add('active');
+        div.style.transform = 'scaleY(1)';
+        div.style.opacity = '1';
+    }, 50);
+}
+
+// Inicializa primeira aba
+renderTab(1);
+
+// Troca de abas
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const tabNumber = tab.getAttribute('data-tab');
+        renderTab(tabNumber);
+    });
+});
+</script>
+
+</body>
+</html>
